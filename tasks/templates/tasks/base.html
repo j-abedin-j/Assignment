@@ -14,7 +14,12 @@
                 <div class="message">{{ msg }}</div>
             {% endfor %}
         {% endif %}
-<span>Hi, {{user.username}}</span>
+
+{% if user.is_authenticated %}
+<span>Hi {{user.username}}</span>
+{% else %}
+<span>Log in First</span>
+{% endif %}
         {% block content %}
         {% endblock %}
     </div>

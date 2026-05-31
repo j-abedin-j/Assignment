@@ -69,3 +69,7 @@ footer {
 .navbar form button:hover {
     color: #e74c3c;
 }
+span{
+    color: #000000;
+    font-size: 50px;
+}
