@@ -1,0 +1,14 @@
+<nav class="navbar">
+    <a href="{% url 'home' %}">Home</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'task_list' %}">My Tasks</a>
+        <a href="{% url 'task_form' %}">New Task</a>
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+</nav>

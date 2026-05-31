@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    {% include 'partials/navbar.html' %}
+
+    <div class="container">
+        {% if messages %}
+            {% for msg in messages %}
+                <div class="message">{{ msg }}</div>
+            {% endfor %}
+        {% endif %}
+<span>Hi, {{user.username}}</span>
+        {% block content %}
+        {% endblock %}
+    </div>
+{% include "partials/footer.html" %}
+</body>
+</html>

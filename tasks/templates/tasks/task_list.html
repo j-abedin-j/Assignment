@@ -1,0 +1,33 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<h2>My Tasks</h2>
+
+<br><br>
+
+
+<form method="GET">
+    <input type="text" name="q" value="{{ query }}" placeholder="Search tasks...">
+    <button type="submit">Search</button> <br><br>
+</form>
+
+
+
+{% for task in tasks %}
+    <div class="task-card">
+        {% if task.image %}
+            <img src="{{ task.image.url }}" alt="{{ task.title }}">
+        {% endif %}
+        <h3>{{ task.title }}</h3>
+        <br>
+        <p>{{ task.description }}</p>
+        <p>Status: {{ task.get_status_display }}</p>
+        <p>Due: {{ task.due_date }}</p>
+        <br>
+        <a href="{% url 'task_update' task.pk %}">Edit</a>
+        <a href="{% url 'task_delete' task.pk %}">Delete</a>
+    </div>
+{% empty %}
+    <p>No tasks found.</p>
+{% endfor %}
+{% endblock %}
